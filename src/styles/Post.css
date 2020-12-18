@@ -1,0 +1,30 @@
+.post {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.post .headerPost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.post .headerPost .infoPost {
+  margin-left: 10px;
+}
+
+.post .headerPost .infoPost p {
+  font-size: 12px;
+  color: gray;
+}
+
+.post .bodyPost {
+  overflow-wrap: anywhere;
+}
+/*# sourceMappingURL=Post.css.map */
