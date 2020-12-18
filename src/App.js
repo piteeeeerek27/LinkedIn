@@ -5,6 +5,7 @@ import { auth } from './app/firebase';
 import Header from './app/Header';
 import Login from './app/Login';
 import Sidebar from './app/Sidebar';
+import Widgets from './app/Widgets';
 import { login, logout, selectUser } from './features/userSlice';
 import './styles/App.css';
 
@@ -41,7 +42,7 @@ const App = () => {
 				<div className='body'>
 					<Sidebar />
 					<Feed />
-					{/* <Widgets /> */}
+					<Widgets />
 				</div>
 			)}
 		</div>

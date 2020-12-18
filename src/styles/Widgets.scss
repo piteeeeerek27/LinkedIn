@@ -1,0 +1,45 @@
+.widgetss {
+	position: sticky;
+	top: 80px;
+	flex: 0.2;
+	background: white;
+	border: 1px solid lightgray;
+	height: fit-content;
+	padding-bottom: 10px;
+	border-radius: 10px;
+	.headerWidgets {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 10px;
+		h2 {
+			font-weight: 400;
+			font-size: 16px;
+		}
+	}
+}
+.articleW {
+	display: flex;
+	padding: 10px;
+	cursor: pointer;
+	&:hover {
+		background: whitesmoke;
+	}
+	.articleLeft {
+		margin-right: 5px;
+		color: #0177b7;
+		& > .MuiSvgIcon-root {
+			font-size: 15px;
+		}
+	}
+	.articleRight {
+		flex: 1;
+		h4 {
+			font-size: 14px;
+		}
+		p {
+			font-size: 12px;
+			color: gray;
+		}
+	}
+}
