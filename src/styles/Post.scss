@@ -18,4 +18,8 @@
 	.bodyPost {
 		overflow-wrap: anywhere;
 	}
+	.buttons {
+		display: flex;
+		justify-content: space-evenly;
+	}
 }
