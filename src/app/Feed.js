@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import '../styles/Feed.css';
-import CreateIcon from '@material-ui/icons/Create';
-import InputOption from './InputOption';
-import ImageIcon from '@material-ui/icons/Image';
-import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
-import EventNoteIcon from '@material-ui/icons/EventNote';
-import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
-import Post from './Post';
-import { db } from './firebase';
-import firebase from 'firebase';
-import { selectUser } from '../features/userSlice';
-import { useSelector } from 'react-redux';
-import FlipMove from 'react-flip-move';
+import React, { useEffect, useState } from "react";
+import "../styles/Feed.scss";
+import CreateIcon from "@material-ui/icons/Create";
+import InputOption from "./InputOption";
+import ImageIcon from "@material-ui/icons/Image";
+import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
+import EventNoteIcon from "@material-ui/icons/EventNote";
+import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
+import Post from "./Post";
+import { db } from "./firebase";
+import firebase from "firebase";
+import { selectUser } from "../features/userSlice";
+import { useSelector } from "react-redux";
+import FlipMove from "react-flip-move";
 
 const Feed = () => {
 	const user = useSelector(selectUser);
 	const [posts, setPosts] = useState([]);
-	const [input, setInput] = useState('');
+	const [input, setInput] = useState("");
 
 	useEffect(() => {
-		db.collection('posts').onSnapshot((snapshot) =>
+		db.collection("posts").onSnapshot((snapshot) =>
 			setPosts(
 				snapshot.docs.map((doc) => ({
 					id: doc.id,
@@ -31,42 +31,42 @@ const Feed = () => {
 
 	const sendPost = (e) => {
 		e.preventDefault();
-		db.collection('posts').add({
+		db.collection("posts").add({
 			name: user.displayName,
 			description: user.email,
 			message: input,
-			photoUrl: user.photoUrl || '',
+			photoUrl: user.photoUrl || "",
 			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
 		});
 
-		setInput('');
+		setInput("");
 	};
 
 	return (
-		<div className='feed'>
-			<div className='inputContainer'>
-				<div className='input'>
+		<div className="feed">
+			<div className="inputContainer">
+				<div className="input">
 					<CreateIcon />
 					<form>
 						<input
-							type='text'
+							type="text"
 							value={input}
 							onChange={(e) => setInput(e.target.value)}
-							placeholder='Start a post'
+							placeholder="Start a post"
 						/>
-						<button type='submit' onClick={sendPost}>
+						<button type="submit" onClick={sendPost}>
 							Send
 						</button>
 					</form>
 				</div>
-				<div className='inputOptions'>
-					<InputOption Icon={ImageIcon} title='Photo' color='#70b5f9' />
-					<InputOption Icon={SubscriptionsIcon} title='Video' color='#e7a33e' />
-					<InputOption Icon={EventNoteIcon} title='Event' color='#c0cbcd' />
+				<div className="inputOptions">
+					<InputOption Icon={ImageIcon} title="Photo" color="#70b5f9" />
+					<InputOption Icon={SubscriptionsIcon} title="Video" color="#e7a33e" />
+					<InputOption Icon={EventNoteIcon} title="Event" color="#c0cbcd" />
 					<InputOption
 						Icon={CalendarViewDayIcon}
-						title='Write article'
-						color='#7fc15e'
+						title="Write article"
+						color="#7fc15e"
 					/>
 				</div>
 			</div>
