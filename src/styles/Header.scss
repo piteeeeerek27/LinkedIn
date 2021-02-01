@@ -6,7 +6,6 @@
 	border-bottom: 0.1px solid lightgray;
 	padding: 10px 0px;
 	background: white;
-	width: 100%;
 	z-index: 999;
 	.left {
 		display: flex;
@@ -32,5 +31,11 @@
 	}
 	.right {
 		display: flex;
+	}
+}
+
+@media (min-width: 833px) {
+	.header {
+		width: 100%;
 	}
 }

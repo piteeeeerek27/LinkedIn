@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Feed from './app/Feed';
-import { auth } from './app/firebase';
-import Header from './app/Header';
-import Login from './app/Login';
-import Sidebar from './app/Sidebar';
-import Widgets from './app/Widgets';
-import { login, logout, selectUser } from './features/userSlice';
-import './styles/App.css';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Feed from "./app/Feed";
+import { auth } from "./app/firebase";
+import Header from "./app/Header";
+import Login from "./app/Login";
+import Sidebar from "./app/Sidebar";
+import Widgets from "./app/Widgets";
+import { login, logout, selectUser } from "./features/userSlice";
+import "./styles/App.scss";
 
 const App = () => {
 	const user = useSelector(selectUser);
@@ -16,7 +16,6 @@ const App = () => {
 	useEffect(() => {
 		auth.onAuthStateChanged((userAuth) => {
 			if (userAuth) {
-				// is logged in
 				dispatch(
 					login({
 						email: userAuth.email,
@@ -26,20 +25,19 @@ const App = () => {
 					}),
 				);
 			} else {
-				// is logged out
 				dispatch(logout());
 			}
 		});
 	}, []);
 
 	return (
-		<div className='app'>
+		<div className="app">
 			<Header />
 
 			{!user ? (
 				<Login />
 			) : (
-				<div className='body'>
+				<div className="body">
 					<Sidebar />
 					<Feed />
 					<Widgets />
